@@ -8,6 +8,7 @@ import java.util.List;
 import toystore.conf.InvoiceFactory;
 import toystore.domain.Customer;
 import toystore.domain.Invoice;
+import toystore.domain.Orderline;
 import toystore.domain.Orders;
 import toystore.repository.CustomerRepository;
 import toystore.repository.InvoiceRepository;
@@ -27,6 +28,7 @@ public class AddInvoiceService implements AddInvoiceDetails{
     private Orders order;
     private Customer customer;
     private Invoice invoice;
+    private List<Orderline> orderlines;
     @Override
     public Long addInvoice(Long customerID, Long orderID)
     {
@@ -38,7 +40,9 @@ public class AddInvoiceService implements AddInvoiceDetails{
         if(order==null || order.getCheckout())
             return null;
 
-        invoice = InvoiceFactory.createInvoice(orderID, order.getTotalPrice(), order.getOrderlines());
+        orderlines = order.getOrderlines();
+
+        invoice = InvoiceFactory.createInvoice(orderID, order.getTotalPrice(), orderlines);
         invoiceRepository.save(invoice);
         id = invoice.getID();
 
