@@ -25,21 +25,21 @@ public class UpdateOrderlineService implements UpdateOrderlineDetails{
     private Item item;
     private Orderline orderline;
     private Orderline newOrderline;
-    private int oldQuantity;
+    //private int oldQuantity;
     @Override
     public boolean updateOrderline(Long orderID, Long itemID, Long orderlineID, int quantity)
     {
         orderline = orderlineRepository.findOne(orderlineID);
         if(orderline==null)
             return false;
-        oldQuantity = orderline.getQuantity();
+        //oldQuantity = orderline.getQuantity();
 
         order = orderRepository.findOne(orderID);
         if(order==null || order.getCheckout())
             return false;
 
         item = itemRepository.findOne(itemID);
-        if(item==null || (item.getQuantity() + oldQuantity) < quantity)
+        if(item==null || item.getQuantity() < quantity)
             return false;
 
         newOrderline = new Orderline
@@ -50,14 +50,14 @@ public class UpdateOrderlineService implements UpdateOrderlineDetails{
 
         orderlineRepository.save(newOrderline);
 
-        item = itemRepository.findOne(itemID);
+        //item = itemRepository.findOne(itemID);
 
-        item = new Item
-                .Builder(item.getName())
-                .copy(item)
-                .quantity(item.getQuantity() + oldQuantity - quantity)
-                .build();
-        itemRepository.save(item);
+        //item = new Item
+                //.Builder(item.getName())
+                //.copy(item)
+                //.quantity(item.getQuantity() + oldQuantity - quantity)
+                //.build();
+        //itemRepository.save(item);
         order = orderRepository.findOne(orderID);
 
         order = new Orders

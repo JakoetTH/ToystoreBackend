@@ -61,7 +61,7 @@ public class AddOrderlineService implements AddOrderlineDetails {
                     .Builder(item.getName())
                     .copy(item)
                     .orderlines(orderlinesi)
-                    .quantity(item.getQuantity()-quantity)
+                    //.quantity(item.getQuantity()-quantity)//do this in checkout Order Service
                     .build();
         orderRepository.save(order);
         itemRepository.save(item);

@@ -39,12 +39,12 @@ public class DeleteOrderlineService implements DeleteOrderlineDetails{
         if(item==null)
             return false;
 
-        item = new Item
-                .Builder(item.getName())
-                .copy(item)
-                .quantity(item.getQuantity() + orderline.getQuantity())
-                .build();
-        itemRepository.save(item);
+        //item = new Item
+                //.Builder(item.getName())
+                //.copy(item)
+                //.quantity(item.getQuantity() + orderline.getQuantity())
+                //.build();
+        //itemRepository.save(item);
 
         order = new Orders
                     .Builder(new Date())
