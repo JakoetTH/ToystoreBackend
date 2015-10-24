@@ -62,6 +62,11 @@
             <class name="toystore.service.testCheckoutOrderService"/>
         </classes>
     </test>
+    <test name="DeleteCustomerService">
+        <classes>
+            <class name="toystore.service.testDeleteCustomerService" />
+        </classes>
+    </test>
     <test name="DeleteOrderlineService">
         <classes>
             <class name="toystore.service.testDeleteOrderlineService" />

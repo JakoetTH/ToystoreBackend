@@ -21,7 +21,6 @@ import toystore.domain.Orderline;
 import toystore.domain.Orders;
 import toystore.repository.ItemRepository;
 import toystore.repository.OrderRepository;
-import toystore.repository.OrderlineRepository;
 
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
