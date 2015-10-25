@@ -21,6 +21,7 @@ import toystore.service.AddOrderService;
 import toystore.service.AddOrderlineService;
 import toystore.service.ChangePasswordService;
 import toystore.service.CheckoutOrderService;
+import toystore.service.DeleteCustomerService;
 import toystore.service.DeleteOrderlineService;
 import toystore.service.EmptyOrderService;
 import toystore.service.GetInvoiceService;
@@ -70,6 +71,8 @@ public class AllApiController {
     GetInvoiceService getInvoiceService;
     @Autowired
     CheckoutOrderService checkoutOrderService;
+    @Autowired
+    DeleteCustomerService deleteCustomerService;
 
     //USER REGISTRATION
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -96,6 +99,17 @@ public class AllApiController {
         if(customer==null)
             return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);//customer with that username and password doesn't exist
         return new ResponseEntity<Customer>(customer, HttpStatus.FOUND);
+    }
+
+    //DELETE USER
+    @RequestMapping(value ="customer/delete", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> deleteCustomer(@RequestParam Long customerid)
+    {
+        boolean bool = deleteCustomerService.deleteCustomer(customerid);
+        if(!bool)
+            return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);//customerid didn't correspond with any existing customers
+        return new ResponseEntity<Boolean>(true, HttpStatus.FOUND);
+
     }
     //GET EXISTING OPEN ORDER ON CUSTOMER OR CREATE A NEW ONE IF ONE DOES NOT EXIST
     @RequestMapping(value = "order/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
