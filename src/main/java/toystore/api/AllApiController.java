@@ -30,6 +30,7 @@ import toystore.service.GetOrderService;
 import toystore.service.GetOrderlineService;
 import toystore.service.LoginService;
 import toystore.service.RegistrationService;
+import toystore.service.UpdateItemService;
 import toystore.service.UpdateOrderlineService;
 import toystore.service.ViewItemsByCategoryService;
 import toystore.service.ViewItemsService;
@@ -73,6 +74,8 @@ public class AllApiController {
     CheckoutOrderService checkoutOrderService;
     @Autowired
     DeleteCustomerService deleteCustomerService;
+    @Autowired
+    UpdateItemService updateItemService;
 
     //USER REGISTRATION
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -111,6 +114,7 @@ public class AllApiController {
         return new ResponseEntity<Boolean>(true, HttpStatus.FOUND);
 
     }
+
     //GET EXISTING OPEN ORDER ON CUSTOMER OR CREATE A NEW ONE IF ONE DOES NOT EXIST
     @RequestMapping(value = "order/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Orders> getOrder(@RequestParam Long customerID)
@@ -126,6 +130,7 @@ public class AllApiController {
         }
         return new ResponseEntity<Orders>(order, HttpStatus.FOUND);//returns uncheckedout order for this customer
     }
+
     //GET ORDER DATE AS STRING
     @RequestMapping(value = "order/getdate", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getOrderDate(@RequestParam Long orderID)
@@ -135,6 +140,7 @@ public class AllApiController {
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);//Something is wrong with getOrderDateService or the orderID doesn't exist
         return new ResponseEntity<String>(date, HttpStatus.FOUND);
     }
+
     //DELETE EXISTING ORDER
     @RequestMapping(value = "order/delete", method = RequestMethod.GET)
     public ResponseEntity<Boolean> deleteOrder(@RequestParam Long orderID)
@@ -144,6 +150,7 @@ public class AllApiController {
             return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);//order id not found - has already been deleted
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
+
     //CHECKOUT ORDER
     @RequestMapping(value = "order/checkout", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Invoice> checkoutOrder(@RequestParam Long orderID,
@@ -160,6 +167,7 @@ public class AllApiController {
             return new ResponseEntity<Invoice>(HttpStatus.NOT_FOUND);//the addInvoiceService didn't add the invoice to the database for some reason
         return new ResponseEntity<Invoice>(invoice, HttpStatus.OK);
     }
+
     //ADD NEW ITEM
     @RequestMapping(value = "item/add", method = RequestMethod.GET)
     public ResponseEntity<Boolean> addItem(@RequestParam String name,
@@ -172,6 +180,7 @@ public class AllApiController {
             return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);//Item with that name already exists
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
+
     //VIEW ALL ITEMS
     @RequestMapping(value = "item/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Item>> viewAllItems()
@@ -181,6 +190,7 @@ public class AllApiController {
             return new ResponseEntity<List<Item>>(HttpStatus.NOT_FOUND);//No items exist in the database - or something else went wrong
         return new ResponseEntity<List<Item>>(items, HttpStatus.FOUND);
     }
+
     //VIEW ITEMS BY CATEGORY
     @RequestMapping(value = "item/category", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Item>> viewAllItemsByCategory(@RequestParam String category)
@@ -190,6 +200,29 @@ public class AllApiController {
             return new ResponseEntity<List<Item>>(HttpStatus.NOT_FOUND);//No items with that category exist
         return new ResponseEntity<List<Item>>(items, HttpStatus.FOUND);
     }
+
+    //UPDATE EXISTING ITEM PRICE
+    @RequestMapping(value = "item/update/stock", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> updateItemStock(@RequestParam Long itemID,
+                                                   @RequestParam int addQuantity)
+    {
+        boolean bool = updateItemService.updateItemStock(itemID, addQuantity);
+        if(!bool)
+            return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);//item of itemid does not exist in the database
+        return new ResponseEntity<Boolean>(true, HttpStatus.FOUND);
+    }
+
+    //UPDATE EXISTING ITEM STOCK
+    @RequestMapping(value = "item/update/price", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> updateItemPrice(@RequestParam Long itemID,
+                                                   @RequestParam float newPrice)
+    {
+        boolean bool = updateItemService.updateItemPrice(itemID, newPrice);
+        if(!bool)
+            return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);//item of itemid does not exist in the database
+        return new ResponseEntity<Boolean>(true, HttpStatus.FOUND);
+    }
+
     //CHANGE PASSWORD
     @RequestMapping(value = "customer/changepassword", method = RequestMethod.GET)
     public ResponseEntity<Boolean> changePassword(@RequestParam Long customerID,
@@ -200,6 +233,7 @@ public class AllApiController {
             return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);//customer ID is invalid
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
+
     //ITS FINALLY HERE - ORDERLINE HANDLER API
     @RequestMapping(value= "orderline/handle", method = RequestMethod.GET)
     public ResponseEntity<Boolean> handleOrderline(@RequestParam Long orderID,

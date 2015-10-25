@@ -107,6 +107,11 @@
             <class name="toystore.service.testRegistrationService" />
         </classes>
     </test>
+    <test name="UpdateItemService">
+        <classes>
+            <class name="toystore.service.testUpdateItemService"/>
+        </classes>
+    </test>
     <test name="UpdateOrderlineService">
         <classes>
             <class name="toystore.service.testUpdateOrderlineService"/>
