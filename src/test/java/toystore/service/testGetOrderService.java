@@ -31,8 +31,6 @@ public class testGetOrderService extends AbstractTestNGSpringContextTests {
     @Autowired
     OrderRepository orderRepository;
     @Autowired
-    AddOrderService addOrderService;
-    @Autowired
     GetOrderService getOrderService;
 
     private Customer customer;
