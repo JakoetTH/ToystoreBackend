@@ -8,6 +8,7 @@ import java.util.List;
 
 import toystore.domain.Item;
 import toystore.repository.ItemRepository;
+import toystore.service.details.ViewItemsByCategoryDetails;
 
 @Service
 public class ViewItemsByCategoryService implements ViewItemsByCategoryDetails {

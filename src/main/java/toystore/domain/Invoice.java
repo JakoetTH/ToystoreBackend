@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+import toystore.domain.details.InvoiceDetails;
+
 @Entity
 public class Invoice implements InvoiceDetails, Serializable{
     @Id

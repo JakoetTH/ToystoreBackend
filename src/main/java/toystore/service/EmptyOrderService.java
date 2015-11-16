@@ -11,9 +11,10 @@ import toystore.domain.Orderline;
 import toystore.domain.Orders;
 import toystore.repository.OrderRepository;
 import toystore.repository.OrderlineRepository;
+import toystore.service.details.EmptyOrderDetails;
 
 @Service
-public class EmptyOrderService implements EmptyOrderDetails{
+public class EmptyOrderService implements EmptyOrderDetails {
     @Autowired
     OrderRepository orderRepository;
     @Autowired

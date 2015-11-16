@@ -11,6 +11,7 @@ import toystore.domain.Orderline;
 import toystore.domain.Orders;
 import toystore.repository.ItemRepository;
 import toystore.repository.OrderRepository;
+import toystore.service.details.GetOrderlineDetails;
 
 @Service
 public class GetOrderlineService implements GetOrderlineDetails {

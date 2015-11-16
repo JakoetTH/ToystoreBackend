@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import toystore.domain.Customer;
 import toystore.repository.CustomerRepository;
+import toystore.service.details.ChangePasswordDetails;
 
 
 @Service

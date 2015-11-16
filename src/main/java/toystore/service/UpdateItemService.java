@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service;
 
 import toystore.domain.Item;
 import toystore.repository.ItemRepository;
+import toystore.service.details.UpdateItemDetails;
 
 @Service
-public class UpdateItemService implements UpdateItemDetails{
+public class UpdateItemService implements UpdateItemDetails {
     @Autowired
     ItemRepository itemRepository;
 

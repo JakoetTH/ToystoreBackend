@@ -8,9 +8,10 @@ import java.util.List;
 
 import toystore.domain.Item;
 import toystore.repository.ItemRepository;
+import toystore.service.details.ViewItemsDetails;
 
 @Service
-public class ViewItemsService implements ViewItemsDetails{
+public class ViewItemsService implements ViewItemsDetails {
     @Autowired
     ItemRepository itemRepository;
 

@@ -9,6 +9,7 @@ import toystore.conf.ItemFactory;
 import toystore.domain.Item;
 import toystore.domain.Orderline;
 import toystore.repository.ItemRepository;
+import toystore.service.details.AddItemDetails;
 
 @Service
 public class AddItemService implements AddItemDetails {

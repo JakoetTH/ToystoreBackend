@@ -11,9 +11,10 @@ import toystore.domain.Orders;
 import toystore.repository.ItemRepository;
 import toystore.repository.OrderRepository;
 import toystore.repository.OrderlineRepository;
+import toystore.service.details.DeleteOrderlineDetails;
 
 @Service
-public class DeleteOrderlineService implements DeleteOrderlineDetails{
+public class DeleteOrderlineService implements DeleteOrderlineDetails {
     @Autowired
     OrderlineRepository orderlineRepository;
     @Autowired

@@ -11,11 +11,10 @@ import toystore.domain.Customer;
 import toystore.domain.Invoice;
 import toystore.domain.Orders;
 import toystore.repository.CustomerRepository;
-import toystore.repository.InvoiceRepository;
-import toystore.repository.OrderRepository;
+import toystore.service.details.DeleteCustomerDetails;
 
 @Service
-public class DeleteCustomerService implements DeleteCustomerDetails{
+public class DeleteCustomerService implements DeleteCustomerDetails {
     @Autowired
     CustomerRepository customerRepository;
 

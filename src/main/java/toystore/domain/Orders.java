@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import toystore.domain.details.OrderDetails;
+
 
 @Entity
 public class Orders implements OrderDetails, Serializable{

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import toystore.domain.Item;
 import toystore.repository.ItemRepository;
+import toystore.service.details.AddItemStockDetails;
 
 @Service
 public class AddItemStockService implements AddItemStockDetails {

@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+import toystore.domain.details.ItemDetails;
+
 @Entity
 public class Item implements ItemDetails, Serializable{
     @Id

@@ -7,9 +7,10 @@ import toystore.domain.Customer;
 import toystore.domain.Orders;
 import toystore.repository.CustomerRepository;
 import toystore.repository.OrderRepository;
+import toystore.service.details.GetOrderDetails;
 
 @Service
-public class GetOrderService implements GetOrderDetails{
+public class GetOrderService implements GetOrderDetails {
     @Autowired
     OrderRepository orderRepository;
     @Autowired

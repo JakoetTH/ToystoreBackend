@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service;
 
 import toystore.domain.Invoice;
 import toystore.repository.InvoiceRepository;
+import toystore.service.details.GetInvoiceDetails;
 
 @Service
-public class GetInvoiceService implements GetInvoiceDetails{
+public class GetInvoiceService implements GetInvoiceDetails {
     @Autowired
     InvoiceRepository invoiceRepository;
 

@@ -11,9 +11,10 @@ import toystore.domain.Orderline;
 import toystore.domain.Orders;
 import toystore.repository.ItemRepository;
 import toystore.repository.OrderRepository;
+import toystore.service.details.CheckoutOrderDetails;
 
 @Service
-public class CheckoutOrderService implements CheckoutOrderDetails{
+public class CheckoutOrderService implements CheckoutOrderDetails {
     @Autowired
     OrderRepository orderRepository;
     @Autowired

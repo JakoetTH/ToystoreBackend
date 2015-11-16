@@ -14,9 +14,10 @@ import toystore.domain.Orders;
 import toystore.repository.CustomerRepository;
 import toystore.repository.InvoiceRepository;
 import toystore.repository.OrderRepository;
+import toystore.service.details.AddInvoiceDetails;
 
 @Service
-public class AddInvoiceService implements AddInvoiceDetails{
+public class AddInvoiceService implements AddInvoiceDetails {
     @Autowired
     InvoiceRepository invoiceRepository;
     @Autowired

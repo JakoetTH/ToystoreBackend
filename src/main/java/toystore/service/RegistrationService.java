@@ -10,6 +10,7 @@ import toystore.domain.Customer;
 import toystore.domain.Invoice;
 import toystore.domain.Orders;
 import toystore.repository.CustomerRepository;
+import toystore.service.details.RegistrationDetails;
 
 @Service
 public class RegistrationService implements RegistrationDetails {

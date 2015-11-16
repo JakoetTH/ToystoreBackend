@@ -4,6 +4,8 @@ package toystore.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import toystore.domain.details.OrderlineDetails;
+
 @Entity
 public class Orderline implements OrderlineDetails, Serializable{
     @Id

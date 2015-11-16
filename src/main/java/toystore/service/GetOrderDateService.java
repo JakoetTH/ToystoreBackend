@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service;
 
 import toystore.domain.Orders;
 import toystore.repository.OrderRepository;
+import toystore.service.details.GetOrderDateDetails;
 
 @Service
-public class GetOrderDateService implements GetOrderDateDetails{
+public class GetOrderDateService implements GetOrderDateDetails {
     @Autowired
     OrderRepository orderRepository;
 
